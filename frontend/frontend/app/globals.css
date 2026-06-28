@@ -1,0 +1,159 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+
+  /* Brand palette */
+  --brand: #0f6b68; /* primary teal */
+  --brand-dark: #0c3a3f; /* deep teal */
+  --surface: #ffffff; /* off-white */
+  --ink: #10201f; /* graphite text */
+  --accent-coral: #cb5a57; /* coral accent */
+
+  /* Elevation + radii */
+  --elev-1: 0 10px 30px rgba(0, 0, 0, 0.15);
+  --panel-radius: 22px;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+}
+
+/* Tailwind theme mapping */
+@theme inline {
+  --font-sans: var(--font-geist-sans), "Geist", "Geist Fallback";
+  --font-mono: var(--font-geist-mono), "Geist Mono", "Geist Mono Fallback";
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--panel-radius) - 4px);
+  --radius-md: calc(var(--panel-radius) - 2px);
+  --radius-lg: var(--panel-radius);
+
+  --color-brand: var(--brand);
+  --color-brand-dark: var(--brand-dark);
+  --color-accent-coral: var(--accent-coral);
+  
+  --radius-panel: var(--panel-radius);
+}
+
+/* Base Tailwind layer */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans), system-ui, sans-serif;
+  }
+}
+
+/* App gradient background */
+.bg-app-gradient {
+  background: radial-gradient(1200px 600px at 0% 100%, rgba(5, 60, 62, 0.78), transparent 60%),
+              linear-gradient(135deg, #0b2330 0%, #0f6b68 55%, #27a395 100%);
+  min-height: 100dvh;
+}
+
+/* Card panel */
+.panel {
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: var(--panel-radius);
+  box-shadow: var(--elev-1);
+}
+
+/* Buttons */
+.btn-outline {
+  @apply inline-flex items-center justify-center rounded-full px-6 py-3 border text-base font-medium transition;
+  border-color: color-mix(in oklab, var(--ink) 30%, #0000);
+  color: var(--ink);
+  background: transparent;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-base font-medium transition;
+  background: var(--brand);
+  color: white;
+  box-shadow: 0 6px 16px rgba(15, 107, 104, 0.35);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.05);
+}
+
+/* Pagination dots */
+.dots {
+  @apply flex items-center gap-2 justify-center;
+}
+
+.dot {
+  @apply h-2 w-2 rounded-full;
+  background: #cfd6d6;
+}
+
+.dot-active {
+  background: var(--ink);
+}
+
+/* Max container width */
+.container-max {
+  @apply mx-auto px-4 sm:px-6 lg:px-8;
+  max-width: 1200px;
+}

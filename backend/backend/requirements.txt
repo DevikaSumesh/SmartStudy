@@ -1,0 +1,37 @@
+.\venv\Scripts\activate# FastAPI and server
+fastapi>=0.109.0
+uvicorn[standard]==0.27.0
+python-multipart==0.0.6
+
+# Database
+motor==3.3.2
+pymongo==4.6.1
+
+# Authentication
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+bcrypt==4.1.2
+
+# Pydantic
+pydantic>=2.5.3
+pydantic-settings>=2.1.0
+
+# Google Gemini AI
+google-generativeai==0.3.2
+
+# FAISS for vector search
+faiss-cpu>=1.7.4
+
+# PDF processing
+PyPDF2==3.0.1
+
+# Document processing
+python-docx==1.1.0
+
+# RL with PPO
+stable-baselines3==2.2.1
+gymnasium==0.29.1
+
+# Utilities
+numpy>=1.26.3
+python-dateutil==2.8.2

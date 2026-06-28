@@ -1,0 +1,19 @@
+# Frontend Dependencies (React)
+node_modules/
+dist/
+build/
+
+# Backend & AI Environments (FastAPI / Python)
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc
+
+# ML Models & Vector DBs (Optional: remove if you want to upload small models)
+*.pt
+*.pth
+*.onnx
+
+# Security (Never upload database URIs or API keys)
+.env
